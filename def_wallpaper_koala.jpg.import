@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/wallpaper_placeholder.jpg-3adcbdae384e198ee9df3ea0f1892a83.stex"
+path="res://.import/def_wallpaper_koala.jpg-24c8bf79d43bb9859e6a466a211a441a.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://wallpaper_placeholder.jpg"
-dest_files=[ "res://.import/wallpaper_placeholder.jpg-3adcbdae384e198ee9df3ea0f1892a83.stex" ]
+source_file="res://def_wallpaper_koala.jpg"
+dest_files=[ "res://.import/def_wallpaper_koala.jpg-24c8bf79d43bb9859e6a466a211a441a.stex" ]
 
 [params]
 

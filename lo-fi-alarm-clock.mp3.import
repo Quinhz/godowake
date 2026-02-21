@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/lo-fi-alarm-clock.mp3-31c0426fb8053b207840f6a365babce0.mp3str"
+
+[deps]
+
+source_file="res://lo-fi-alarm-clock.mp3"
+dest_files=[ "res://.import/lo-fi-alarm-clock.mp3-31c0426fb8053b207840f6a365babce0.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

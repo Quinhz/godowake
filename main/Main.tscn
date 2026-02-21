@@ -1,14 +1,25 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://main/Main.gd" type="Script" id=1]
 [ext_resource path="res://fonts/geo/Geo-Regular.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://lo-fi-alarm-clock.mp3" type="AudioStream" id=3]
+[ext_resource path="res://fonts/geo/Geo-Italic.ttf" type="DynamicFontData" id=4]
 
 [sub_resource type="DynamicFont" id=1]
 size = 64
 font_data = ExtResource( 2 )
 
+[sub_resource type="DynamicFont" id=3]
+font_data = ExtResource( 2 )
+
 [sub_resource type="DynamicFont" id=2]
 font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=5]
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=4]
+font_data = ExtResource( 4 )
 
 [node name="Main" type="Control"]
 anchor_right = 1.0
@@ -33,16 +44,95 @@ custom_fonts/font = SubResource( 1 )
 text = "00:00:00"
 
 [node name="ChangeWallp" type="Button" parent="."]
-anchor_left = 0.499023
-anchor_top = 0.685
-anchor_right = 0.499023
-anchor_bottom = 0.685
+anchor_left = 0.124023
+anchor_top = 0.805
+anchor_right = 0.125977
+anchor_bottom = 0.805
 margin_left = -63.0
 margin_top = -27.0
 margin_right = 63.0
 margin_bottom = 27.0
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = SubResource( 3 )
 text = "Change Wallpaper"
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="HourInput" type="LineEdit" parent="."]
+anchor_left = 0.46582
+anchor_top = 0.646667
+anchor_right = 0.46582
+anchor_bottom = 0.646667
+margin_left = -29.0
+margin_top = -12.0
+margin_right = 29.0
+margin_bottom = 12.0
+custom_fonts/font = SubResource( 2 )
+max_length = 2
+placeholder_text = "hour"
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="MinInput" type="LineEdit" parent="."]
+anchor_left = 0.536133
+anchor_top = 0.646667
+anchor_right = 0.536133
+anchor_bottom = 0.646667
+margin_left = -29.0
+margin_top = -12.0
+margin_right = 29.0
+margin_bottom = 12.0
+custom_fonts/font = SubResource( 2 )
+placeholder_text = "minute"
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="SetAlarm" type="Button" parent="."]
+anchor_left = 0.497559
+anchor_top = 0.725833
+anchor_right = 0.497559
+anchor_bottom = 0.725833
+margin_left = -37.5
+margin_top = -11.5
+margin_right = 37.5
+margin_bottom = 11.5
+custom_fonts/font = SubResource( 5 )
+text = "Set Alarm"
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="StopAlarm" type="Button" parent="."]
+visible = false
+self_modulate = Color( 1, 0.647059, 0.647059, 1 )
+anchor_left = 0.489746
+anchor_top = 0.779167
+anchor_right = 0.505371
+anchor_bottom = 0.779167
+margin_left = -37.5
+margin_top = -11.5
+margin_right = 37.5
+margin_bottom = 11.5
+custom_fonts/font = SubResource( 5 )
+text = "Stop Alarm"
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="LabelStatus" type="Label" parent="."]
+anchor_left = 0.437
+anchor_top = 0.573
+anchor_right = 0.562
+anchor_bottom = 0.6
+margin_left = 0.511993
+margin_top = 0.199982
+margin_right = 0.511963
+margin_bottom = 0.999969
+custom_fonts/font = SubResource( 4 )
+align = 1
+valign = 1
 __meta__ = {
 "_edit_use_anchors_": true
 }
@@ -55,5 +145,10 @@ mode = 0
 access = 2
 filters = PoolStringArray( "*.jpg", "*.png", "*.jpeg" )
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
+
 [connection signal="pressed" from="ChangeWallp" to="." method="_on_ChangeWallp_pressed"]
+[connection signal="pressed" from="SetAlarm" to="." method="_on_SetAlarm_pressed"]
+[connection signal="pressed" from="StopAlarm" to="." method="_on_StopAlarm_pressed"]
 [connection signal="file_selected" from="FileDialog" to="." method="_on_FileDialog_file_selected"]

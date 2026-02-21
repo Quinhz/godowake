@@ -1,11 +1,18 @@
 extends Control
 
+# Variables
 var save_path = "user://settings.cfg"
-var test_path = "res://wallpaper_placeholder.jpg"
+var test_path = "res://def_wallpaper_koala.jpg"
 
+var alarm_hour = -1
+var alarm_minute = -1
+var active_alarm = false
+
+# Nodes
 onready var wallpaper = $Wallpaper
 onready var label_clock = $Clock
 onready var file_dialog = $FileDialog
+onready var alarm_sound = $AudioStreamPlayer
 
 
 # Called when the node enters the scene tree for the first time.
@@ -18,6 +25,11 @@ func _ready():
 func _process(_delta):
 	var time = OS.get_time()
 	label_clock.text = "%02d:%02d:%02d" % [time.hour, time.minute, time.second]
+	
+	if active_alarm:
+		var curr_time = OS.get_time()
+		if curr_time.hour == alarm_hour and curr_time.minute == alarm_minute:
+			play_alarm()
 
 
 # My functions
@@ -37,6 +49,13 @@ func set_wallpaper(path): # I hate Windows
 		print("External wallpaper loaded.")
 	else:
 		print("Error loading from PC: ", error)
+
+func play_alarm():
+	if active_alarm and not alarm_sound.playing:
+		alarm_sound.play()
+		$StopAlarm.show()
+		$LabelStatus.text = "Ringing"
+		print("HEY DEV!")
 
 func save_config(image_path):
 	var config = ConfigFile.new()
@@ -59,3 +78,25 @@ func _on_ChangeWallp_pressed():
 func _on_FileDialog_file_selected(path):
 	set_wallpaper(path)
 	save_config(path)
+
+
+func _on_SetAlarm_pressed():
+	var h = int($HourInput.text)
+	var m = int($MinInput.text)
+	
+	if h >= 0 and h < 24 and m>= 0 and m < 60:
+		alarm_hour = h
+		alarm_minute = m
+		active_alarm = true
+		$LabelStatus.text = "Alarm set for: %02d:%02d" % [h, m]
+	else:
+		$LabelStatus.text = "Invalid Time!"
+
+
+func _on_StopAlarm_pressed():
+	$StopAlarm.hide()
+	active_alarm = false
+	alarm_sound.stop()
+	$LabelStatus.text = ""
+	$SetAlarm.show()
+	
