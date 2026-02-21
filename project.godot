@@ -14,6 +14,12 @@ config/name="GodoWake"
 run/main_scene="res://main/Main.tscn"
 config/icon="res://icon.png"
 
+[display]
+
+window/handheld/orientation="sensor"
+window/stretch/mode="viewport"
+window/stretch/aspect="expand"
+
 [gui]
 
 common/drop_mouse_on_gui_input_disabled=true
