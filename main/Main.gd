@@ -18,13 +18,10 @@ func _process(_delta):
 	label_clock.text = "%02d:%02d:%02d" % [time.hour, time.minute, time.second]
 
 func set_wallpaper(path):
-	var img = Image.new()
-	var error = img.load(path)
+	var tex = load(path)
 	
-	if error == OK:
-		var tex = ImageTexture.new()
-		tex.create_from_image(img)
+	if tex:
 		wallpaper.texture = tex
 		print ("Wallpaper loaded!")
 	else:
-		print("Error loading image.")
+		print("Error loading image in: ", path)
