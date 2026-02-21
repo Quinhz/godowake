@@ -1,10 +1,13 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://main/Main.gd" type="Script" id=1]
 [ext_resource path="res://fonts/geo/Geo-Regular.ttf" type="DynamicFontData" id=2]
 
 [sub_resource type="DynamicFont" id=1]
 size = 64
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=2]
 font_data = ExtResource( 2 )
 
 [node name="Main" type="Control"]
@@ -28,3 +31,29 @@ margin_right = 111.0
 margin_bottom = 33.5
 custom_fonts/font = SubResource( 1 )
 text = "00:00:00"
+
+[node name="ChangeWallp" type="Button" parent="."]
+anchor_left = 0.499023
+anchor_top = 0.685
+anchor_right = 0.499023
+anchor_bottom = 0.685
+margin_left = -63.0
+margin_top = -27.0
+margin_right = 63.0
+margin_bottom = 27.0
+custom_fonts/font = SubResource( 2 )
+text = "Change Wallpaper"
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="FileDialog" type="FileDialog" parent="."]
+margin_right = 315.0
+margin_bottom = 130.0
+window_title = "Choose your wallpaper"
+mode = 0
+access = 2
+filters = PoolStringArray( "*.jpg", "*.png", "*.jpeg" )
+
+[connection signal="pressed" from="ChangeWallp" to="." method="_on_ChangeWallp_pressed"]
+[connection signal="file_selected" from="FileDialog" to="." method="_on_FileDialog_file_selected"]
