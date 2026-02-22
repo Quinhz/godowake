@@ -46,16 +46,18 @@ func set_wallpaper(path): # I hate Windows
 		var tex =ImageTexture.new()
 		tex.create_from_image(img)
 		$Wallpaper.texture = tex
-		print("External wallpaper loaded.")
+#		print("External wallpaper loaded.")
 	else:
-		print("Error loading from PC: ", error)
+#		pass
+		return
+#		print("Error loading from PC: ", error)
 
 func play_alarm():
 	if active_alarm and not alarm_sound.playing:
 		alarm_sound.play()
 		$StopAlarm.show()
 		$LabelStatus.text = "Ringing"
-		print("HEY DEV!")
+#		print("HEY DEV!")
 
 func save_config(image_path):
 	var config = ConfigFile.new()
@@ -83,14 +85,25 @@ func _on_FileDialog_file_selected(path):
 func _on_SetAlarm_pressed():
 	var h = int($HourInput.text)
 	var m = int($MinInput.text)
+	var curr_time = OS.get_time()
 	
 	if h >= 0 and h < 24 and m>= 0 and m < 60:
 		alarm_hour = h
 		alarm_minute = m
 		active_alarm = true
-		$LabelStatus.text = "Alarm set for: %02d:%02d" % [h, m]
+		if $StopAlarm.visible and alarm_sound.playing:
+			$StopAlarm.hide()
+			$LabelStatus.text = ""
+			alarm_sound.stop()
+			active_alarm = false
+		if active_alarm:
+			$LabelStatus.text = "Alarm set for: %02d:%02d" % [h, m]
 	else:
+		alarm_hour = -1
+		alarm_minute = -1
+		active_alarm = false
 		$LabelStatus.text = "Invalid Time!"
+	print(active_alarm)
 
 
 func _on_StopAlarm_pressed():
@@ -98,5 +111,4 @@ func _on_StopAlarm_pressed():
 	active_alarm = false
 	alarm_sound.stop()
 	$LabelStatus.text = ""
-	$SetAlarm.show()
 	

@@ -68,7 +68,9 @@ margin_top = -12.0
 margin_right = 29.0
 margin_bottom = 12.0
 custom_fonts/font = SubResource( 2 )
+align = 1
 max_length = 2
+virtual_keyboard_type = 3
 placeholder_text = "hour"
 __meta__ = {
 "_edit_use_anchors_": true
@@ -84,7 +86,9 @@ margin_top = -12.0
 margin_right = 29.0
 margin_bottom = 12.0
 custom_fonts/font = SubResource( 2 )
-placeholder_text = "minute"
+align = 1
+max_length = 2
+placeholder_text = "min"
 __meta__ = {
 "_edit_use_anchors_": true
 }
@@ -140,7 +144,7 @@ __meta__ = {
 [node name="FileDialog" type="FileDialog" parent="."]
 margin_right = 315.0
 margin_bottom = 130.0
-window_title = "Choose your wallpaper"
+window_title = "Open a File"
 mode = 0
 access = 2
 filters = PoolStringArray( "*.jpg", "*.png", "*.jpeg" )
