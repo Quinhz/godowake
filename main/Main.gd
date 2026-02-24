@@ -17,6 +17,8 @@ onready var label_clock = $Clock
 onready var file_dialog = $FileDialog
 onready var audio_dialog = $AudioDialog
 onready var alarm_sound = $AudioStreamPlayer
+onready var status = $Clock/LabelStatus
+onready var tween = get_node("Tween")
 
 
 # Called when the node enters the scene tree for the first time.
@@ -41,11 +43,25 @@ func _process(_delta):
 		$AlertOverlay.visible = true
 		if OS.get_ticks_msec() % 1000 < 500:
 			$AlertOverlay.color = Color(1, 0.31, 0.31, 0.5)
+			tween.interpolate_property($Clock, "modulate",
+				Color(1,1,1,1), Color(1,1,1,0.5), 0.5,
+				Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
+			tween.start()
+
 		else:
 			$AlertOverlay.color = Color(0.7, 0.31, 1, 0.44)
+			tween.interpolate_property($Clock, "modulate",
+				Color(1,1,1,0.5), Color(1,1,1,1), 0.5,
+				Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
+			tween.start()
 #		$Wallpaper.rect_position.x += sin(OS.get_ticks_msec() * 0.005)
+		
 		$Clock.rect_position.y += sin(OS.get_ticks_msec() * 0.001) * 0.1
 	elif alarm_sound.playing == false:
+		tween.interpolate_property($Clock, "modulate",
+				Color(1,1,1,1), Color(1,1,1,1), 0.5,
+				Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
+		tween.start()
 		$Clock.rect_position.y = 266
 		$AlertOverlay.visible = false
 
@@ -90,7 +106,7 @@ func play_alarm():
 	if active_alarm and not alarm_sound.playing:
 		alarm_sound.play()
 		$StopAlarm.show()
-		$LabelStatus.text = "Ringing"
+		status.text = "Ringing"
 #		print("HEY DEV!")
 
 func save_config():
@@ -146,16 +162,16 @@ func _on_SetAlarm_pressed():
 		active_alarm = true
 		if $StopAlarm.visible and alarm_sound.playing:
 			$StopAlarm.hide()
-			$LabelStatus.text = ""
+			status.text = ""
 			alarm_sound.stop()
 			active_alarm = false
 		if active_alarm:
-			$LabelStatus.text = "Alarm set for: %02d:%02d" % [h, m]
+			status.text = "Alarm set for: %02d:%02d" % [h, m]
 	else:
 		alarm_hour = -1
 		alarm_minute = -1
 		active_alarm = false
-		$LabelStatus.text = "Invalid Time!"
+		status.text = "Invalid Time!"
 	print(active_alarm)
 
 
@@ -163,7 +179,7 @@ func _on_StopAlarm_pressed():
 	$StopAlarm.hide()
 	active_alarm = false
 	alarm_sound.stop()
-	$LabelStatus.text = ""
+	status.text = ""
 	
 
 

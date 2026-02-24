@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=50 format=2]
 
 [ext_resource path="res://main/Main.gd" type="Script" id=1]
 [ext_resource path="res://fonts/geo/Geo-Regular.ttf" type="DynamicFontData" id=2]
@@ -10,6 +10,11 @@
 size = 64
 font_data = ExtResource( 2 )
 
+[sub_resource type="DynamicFont" id=4]
+font_data = ExtResource( 4 )
+
+[sub_resource type="StyleBoxEmpty" id=18]
+
 [sub_resource type="DynamicFont" id=3]
 font_data = ExtResource( 2 )
 
@@ -19,8 +24,314 @@ font_data = ExtResource( 2 )
 [sub_resource type="DynamicFont" id=5]
 font_data = ExtResource( 2 )
 
-[sub_resource type="DynamicFont" id=4]
-font_data = ExtResource( 4 )
+[sub_resource type="ShortCut" id=51]
+
+[sub_resource type="StyleBoxFlat" id=14]
+content_margin_bottom = 5.0
+bg_color = Color( 0.313726, 0, 0.141176, 1 )
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_blend = true
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+shadow_color = Color( 0.262745, 0.00784314, 0.0941176, 0.717647 )
+shadow_size = 3
+shadow_offset = Vector2( 0, 3 )
+
+[sub_resource type="StyleBoxFlat" id=16]
+bg_color = Color( 0.462745, 0, 0.207843, 1 )
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_blend = true
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+shadow_color = Color( 0.262745, 0.00784314, 0.0941176, 0.717647 )
+shadow_size = 1
+shadow_offset = Vector2( 0, 1 )
+
+[sub_resource type="StyleBoxEmpty" id=17]
+
+[sub_resource type="StyleBoxFlat" id=15]
+bg_color = Color( 0.462745, 0, 0.207843, 1 )
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_blend = true
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+shadow_color = Color( 0.262745, 0.00784314, 0.0941176, 0.717647 )
+shadow_size = 3
+shadow_offset = Vector2( 0, 3 )
+
+[sub_resource type="StyleBoxFlat" id=19]
+bg_color = Color( 0, 0.231373, 0.305882, 0.803922 )
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color( 0.156863, 0.403922, 0.431373, 1 )
+border_blend = true
+corner_radius_top_left = 1
+corner_radius_top_right = 1
+corner_radius_bottom_right = 1
+corner_radius_bottom_left = 1
+
+[sub_resource type="StyleBoxFlat" id=10]
+bg_color = Color( 0, 0.231373, 0.305882, 0.803922 )
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color( 0.360784, 0.941176, 1, 1 )
+border_blend = true
+corner_radius_top_left = 1
+corner_radius_top_right = 1
+corner_radius_bottom_right = 1
+corner_radius_bottom_left = 1
+
+[sub_resource type="StyleBoxFlat" id=23]
+content_margin_bottom = 3.0
+bg_color = Color( 0, 0.176471, 0.235294, 0.803922 )
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color( 0, 0.588235, 0.647059, 1 )
+border_blend = true
+corner_radius_top_left = 1
+corner_radius_top_right = 1
+corner_radius_bottom_right = 1
+corner_radius_bottom_left = 1
+
+[sub_resource type="StyleBoxFlat" id=20]
+bg_color = Color( 0, 0.231373, 0.305882, 0.803922 )
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color( 0, 0.588235, 0.647059, 1 )
+border_blend = true
+corner_radius_top_left = 1
+corner_radius_top_right = 1
+corner_radius_bottom_right = 1
+corner_radius_bottom_left = 1
+
+[sub_resource type="StyleBoxFlat" id=24]
+bg_color = Color( 0, 0.45098, 0.596078, 0.803922 )
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color( 0, 0.588235, 0.647059, 1 )
+border_blend = true
+corner_radius_top_left = 1
+corner_radius_top_right = 1
+corner_radius_bottom_right = 1
+corner_radius_bottom_left = 1
+
+[sub_resource type="StyleBoxFlat" id=11]
+bg_color = Color( 0, 0.352941, 0.462745, 0.803922 )
+
+[sub_resource type="StyleBoxFlat" id=21]
+bg_color = Color( 0.133333, 0.254902, 0.337255, 0.870588 )
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color( 0.360784, 0.941176, 1, 1 )
+
+[sub_resource type="StyleBoxFlat" id=12]
+content_margin_left = 5.0
+content_margin_right = 5.0
+content_margin_top = 5.0
+content_margin_bottom = 5.0
+bg_color = Color( 0.133333, 0.254902, 0.337255, 0.870588 )
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[sub_resource type="StyleBoxFlat" id=25]
+bg_color = Color( 0.2, 0.270588, 0.294118, 0.803922 )
+corner_radius_top_left = 1
+corner_radius_top_right = 1
+corner_radius_bottom_right = 1
+corner_radius_bottom_left = 1
+
+[sub_resource type="StyleBoxEmpty" id=26]
+
+[sub_resource type="StyleBoxFlat" id=27]
+content_margin_bottom = 3.0
+bg_color = Color( 0, 0.266667, 0.352941, 0.803922 )
+corner_radius_top_left = 1
+corner_radius_top_right = 1
+corner_radius_bottom_right = 1
+corner_radius_bottom_left = 1
+
+[sub_resource type="StyleBoxFlat" id=28]
+bg_color = Color( 0, 0.352941, 0.462745, 0.803922 )
+corner_radius_top_left = 1
+corner_radius_top_right = 1
+corner_radius_bottom_right = 1
+corner_radius_bottom_left = 1
+
+[sub_resource type="StyleBoxFlat" id=29]
+bg_color = Color( 0, 0.501961, 0.658824, 0.803922 )
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color( 0.360784, 0.941176, 1, 1 )
+border_blend = true
+corner_radius_top_left = 1
+corner_radius_top_right = 1
+corner_radius_bottom_right = 1
+corner_radius_bottom_left = 1
+
+[sub_resource type="StyleBoxFlat" id=35]
+bg_color = Color( 0.196078, 0.439216, 0.588235, 1 )
+
+[sub_resource type="StyleBoxFlat" id=36]
+bg_color = Color( 0.101961, 0.223529, 0.298039, 1 )
+
+[sub_resource type="StyleBoxEmpty" id=52]
+
+[sub_resource type="StyleBoxEmpty" id=45]
+
+[sub_resource type="StyleBoxFlat" id=34]
+bg_color = Color( 0.101961, 0.223529, 0.298039, 1 )
+
+[sub_resource type="StyleBoxEmpty" id=46]
+
+[sub_resource type="StyleBoxFlat" id=47]
+bg_color = Color( 0.0627451, 0.133333, 0.176471, 1 )
+
+[sub_resource type="StyleBoxEmpty" id=48]
+
+[sub_resource type="StyleBoxFlat" id=44]
+bg_color = Color( 0.196078, 0.368627, 0.478431, 1 )
+
+[sub_resource type="StyleBoxFlat" id=49]
+bg_color = Color( 0.0980392, 0.321569, 0.4, 1 )
+
+[sub_resource type="StyleBoxEmpty" id=50]
+
+[sub_resource type="StyleBoxFlat" id=37]
+bg_color = Color( 0.0117647, 0.435294, 0.482353, 1 )
+corner_radius_top_left = 100
+corner_radius_top_right = 100
+corner_radius_bottom_right = 100
+corner_radius_bottom_left = 100
+
+[sub_resource type="StyleBoxFlat" id=38]
+bg_color = Color( 0.313726, 0.733333, 0.776471, 1 )
+corner_radius_top_left = 100
+corner_radius_top_right = 100
+corner_radius_bottom_right = 100
+corner_radius_bottom_left = 100
+
+[sub_resource type="StyleBoxFlat" id=39]
+bg_color = Color( 0.313726, 0.733333, 0.776471, 1 )
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color( 0.8, 0.8, 0.8, 0 )
+corner_radius_top_left = 100
+corner_radius_top_right = 100
+corner_radius_bottom_right = 100
+corner_radius_bottom_left = 100
+
+[sub_resource type="StyleBoxFlat" id=40]
+content_margin_left = 5.0
+content_margin_right = 5.0
+content_margin_top = 5.0
+content_margin_bottom = 5.0
+bg_color = Color( 0.101961, 0.223529, 0.298039, 1 )
+corner_radius_top_left = 100
+corner_radius_top_right = 100
+corner_radius_bottom_right = 100
+corner_radius_bottom_left = 100
+
+[sub_resource type="StyleBoxFlat" id=41]
+bg_color = Color( 0.313726, 0.733333, 0.776471, 1 )
+corner_radius_top_left = 100
+corner_radius_top_right = 100
+corner_radius_bottom_right = 100
+corner_radius_bottom_left = 100
+
+[sub_resource type="StyleBoxFlat" id=9]
+bg_color = Color( 0.133333, 0.215686, 0.239216, 1 )
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+
+[sub_resource type="DynamicFont" id=22]
+use_filter = true
+font_data = ExtResource( 2 )
+
+[sub_resource type="Theme" id=8]
+default_font = SubResource( 22 )
+Button/styles/disabled = SubResource( 19 )
+Button/styles/focus = SubResource( 10 )
+Button/styles/hover = SubResource( 23 )
+Button/styles/normal = SubResource( 20 )
+Button/styles/pressed = SubResource( 24 )
+Label/styles/normal = SubResource( 11 )
+LineEdit/colors/font_color_selected = Color( 0.0862745, 0.258824, 0.360784, 1 )
+LineEdit/colors/selection_color = Color( 0.415686, 0.945098, 1, 1 )
+LineEdit/styles/focus = SubResource( 21 )
+LineEdit/styles/normal = SubResource( 12 )
+OptionButton/styles/disabled = SubResource( 25 )
+OptionButton/styles/focus = SubResource( 26 )
+OptionButton/styles/hover = SubResource( 27 )
+OptionButton/styles/normal = SubResource( 28 )
+OptionButton/styles/pressed = SubResource( 29 )
+PopupMenu/colors/font_color = Color( 0.380392, 0.866667, 0.901961, 1 )
+PopupMenu/styles/hover = SubResource( 35 )
+PopupMenu/styles/panel = SubResource( 36 )
+ToolButton/colors/font_color = Color( 0.635294, 0.941176, 1, 1 )
+ToolButton/colors/font_color_focus = Color( 0.635294, 0.941176, 1, 0 )
+ToolButton/colors/font_color_hover = Color( 0.419608, 0.619608, 0.654902, 1 )
+ToolButton/colors/font_color_pressed = Color( 0.101961, 0.439216, 0.501961, 1 )
+ToolButton/styles/focus = SubResource( 52 )
+TooltipLabel/colors/font_color = Color( 0.419608, 0.878431, 0.913725, 1 )
+TooltipPanel/styles/panel = SubResource( 45 )
+Tree/colors/font_color = Color( 0.309804, 0.470588, 0.596078, 1 )
+Tree/colors/font_color_selected = Color( 0.380392, 0.866667, 0.901961, 1 )
+Tree/colors/guide_color = Color( 0.137255, 0.32549, 0.384314, 1 )
+Tree/styles/bg = SubResource( 34 )
+Tree/styles/bg_focus = SubResource( 46 )
+Tree/styles/button_pressed = SubResource( 47 )
+Tree/styles/cursor = SubResource( 48 )
+Tree/styles/cursor_unfocused = SubResource( 48 )
+Tree/styles/custom_button = SubResource( 48 )
+Tree/styles/custom_button_hover = SubResource( 48 )
+Tree/styles/custom_button_pressed = SubResource( 48 )
+Tree/styles/selected = SubResource( 44 )
+Tree/styles/selected_focus = SubResource( 49 )
+Tree/styles/title_button_hover = SubResource( 50 )
+VScrollBar/styles/grabber = SubResource( 37 )
+VScrollBar/styles/grabber_highlight = SubResource( 38 )
+VScrollBar/styles/grabber_pressed = SubResource( 39 )
+VScrollBar/styles/scroll = SubResource( 40 )
+VScrollBar/styles/scroll_focus = SubResource( 41 )
+WindowDialog/colors/title_color = Color( 0.2, 1, 1, 0 )
+WindowDialog/styles/panel = SubResource( 9 )
+
+[sub_resource type="Animation" id=13]
+resource_name = "test"
 
 [node name="Main" type="Control"]
 anchor_right = 1.0
@@ -36,6 +347,7 @@ stretch_mode = 7
 visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
+mouse_filter = 1
 color = Color( 1, 0.341176, 0.309804, 0.690196 )
 
 [node name="Clock" type="Label" parent="."]
@@ -43,12 +355,28 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -111.0
-margin_top = -34.0
-margin_right = 111.0
-margin_bottom = 33.0
+margin_left = -121.0
+margin_top = -35.5
+margin_right = 121.0
+margin_bottom = 35.5
+theme = ExtResource( 5 )
 custom_fonts/font = SubResource( 1 )
 text = "00:00:00"
+
+[node name="LabelStatus" type="Label" parent="Clock"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -64.0
+margin_top = 12.0
+margin_right = 64.0
+margin_bottom = 49.0
+rect_min_size = Vector2( 128, 17 )
+custom_fonts/font = SubResource( 4 )
+custom_styles/normal = SubResource( 18 )
+align = 1
+valign = 1
 
 [node name="ChangeWallp" type="Button" parent="."]
 anchor_left = 0.124023
@@ -60,6 +388,7 @@ margin_top = -27.0
 margin_right = 62.9991
 margin_bottom = 27.0
 rect_min_size = Vector2( 128, 54 )
+mouse_default_cursor_shape = 2
 theme = ExtResource( 5 )
 custom_fonts/font = SubResource( 3 )
 text = "Change Wallpaper"
@@ -77,6 +406,7 @@ margin_top = -27.0
 margin_right = 32.256
 margin_bottom = 26.8
 rect_min_size = Vector2( 64, 54 )
+mouse_default_cursor_shape = 2
 theme = ExtResource( 5 )
 custom_fonts/font = SubResource( 3 )
 text = "Sound"
@@ -134,8 +464,10 @@ margin_top = -11.5
 margin_right = 37.5
 margin_bottom = 11.5
 rect_min_size = Vector2( 75, 23 )
+mouse_default_cursor_shape = 2
 theme = ExtResource( 5 )
 custom_fonts/font = SubResource( 5 )
+shortcut = SubResource( 51 )
 text = "Set Alarm"
 __meta__ = {
 "_edit_use_anchors_": true
@@ -143,7 +475,6 @@ __meta__ = {
 
 [node name="StopAlarm" type="Button" parent="."]
 visible = false
-self_modulate = Color( 1, 0.647059, 0.647059, 1 )
 anchor_left = 0.489746
 anchor_top = 0.779167
 anchor_right = 0.505371
@@ -153,25 +484,13 @@ margin_top = -11.5
 margin_right = 37.5
 margin_bottom = 11.5
 rect_min_size = Vector2( 91, 23 )
+mouse_default_cursor_shape = 2
 custom_fonts/font = SubResource( 5 )
+custom_styles/hover = SubResource( 14 )
+custom_styles/pressed = SubResource( 16 )
+custom_styles/focus = SubResource( 17 )
+custom_styles/normal = SubResource( 15 )
 text = "Stop Alarm"
-__meta__ = {
-"_edit_use_anchors_": true
-}
-
-[node name="LabelStatus" type="Label" parent="."]
-anchor_left = 0.437
-anchor_top = 0.573
-anchor_right = 0.562
-anchor_bottom = 0.6
-margin_left = 0.511993
-margin_top = 0.199982
-margin_right = 0.511963
-margin_bottom = 0.999969
-rect_min_size = Vector2( 128, 17 )
-custom_fonts/font = SubResource( 4 )
-align = 1
-valign = 1
 __meta__ = {
 "_edit_use_anchors_": true
 }
@@ -179,6 +498,7 @@ __meta__ = {
 [node name="FileDialog" type="FileDialog" parent="."]
 margin_right = 315.0
 margin_bottom = 130.0
+theme = SubResource( 8 )
 window_title = "Open a File"
 mode = 0
 access = 2
@@ -187,6 +507,7 @@ filters = PoolStringArray( "*.jpg", "*.png", "*.jpeg" )
 [node name="AudioDialog" type="FileDialog" parent="."]
 margin_right = 315.0
 margin_bottom = 130.0
+theme = SubResource( 8 )
 window_title = "Open a File"
 mode = 0
 access = 2
@@ -194,6 +515,11 @@ filters = PoolStringArray( "*.mp3" )
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 3 )
+
+[node name="Tween" type="Tween" parent="."]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/test = SubResource( 13 )
 
 [connection signal="pressed" from="ChangeWallp" to="." method="_on_ChangeWallp_pressed"]
 [connection signal="pressed" from="ChangeAudio" to="." method="_on_ChangeAudio_pressed"]
