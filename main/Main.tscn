@@ -1,9 +1,10 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://main/Main.gd" type="Script" id=1]
 [ext_resource path="res://fonts/geo/Geo-Regular.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://lo-fi-alarm-clock.mp3" type="AudioStream" id=3]
 [ext_resource path="res://fonts/geo/Geo-Italic.ttf" type="DynamicFontData" id=4]
+[ext_resource path="res://main/P3_theme.tres" type="Theme" id=5]
 
 [sub_resource type="DynamicFont" id=1]
 size = 64
@@ -31,15 +32,21 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 stretch_mode = 7
 
+[node name="AlertOverlay" type="ColorRect" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 1, 0.341176, 0.309804, 0.690196 )
+
 [node name="Clock" type="Label" parent="."]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 margin_left = -111.0
-margin_top = -33.5
+margin_top = -34.0
 margin_right = 111.0
-margin_bottom = 33.5
+margin_bottom = 33.0
 custom_fonts/font = SubResource( 1 )
 text = "00:00:00"
 
@@ -53,6 +60,7 @@ margin_top = -27.0
 margin_right = 62.9991
 margin_bottom = 27.0
 rect_min_size = Vector2( 128, 54 )
+theme = ExtResource( 5 )
 custom_fonts/font = SubResource( 3 )
 text = "Change Wallpaper"
 __meta__ = {
@@ -69,6 +77,7 @@ margin_top = -27.0
 margin_right = 32.256
 margin_bottom = 26.8
 rect_min_size = Vector2( 64, 54 )
+theme = ExtResource( 5 )
 custom_fonts/font = SubResource( 3 )
 text = "Sound"
 __meta__ = {
@@ -85,6 +94,7 @@ margin_top = -12.0
 margin_right = 29.0
 margin_bottom = 12.0
 rect_min_size = Vector2( 58, 27 )
+theme = ExtResource( 5 )
 custom_fonts/font = SubResource( 2 )
 align = 1
 max_length = 2
@@ -104,6 +114,7 @@ margin_top = -12.0
 margin_right = 29.0
 margin_bottom = 12.0
 rect_min_size = Vector2( 58, 27 )
+theme = ExtResource( 5 )
 custom_fonts/font = SubResource( 2 )
 align = 1
 max_length = 2
@@ -123,6 +134,7 @@ margin_top = -11.5
 margin_right = 37.5
 margin_bottom = 11.5
 rect_min_size = Vector2( 75, 23 )
+theme = ExtResource( 5 )
 custom_fonts/font = SubResource( 5 )
 text = "Set Alarm"
 __meta__ = {
@@ -167,7 +179,7 @@ __meta__ = {
 [node name="FileDialog" type="FileDialog" parent="."]
 margin_right = 315.0
 margin_bottom = 130.0
-window_title = "Choose an image"
+window_title = "Open a File"
 mode = 0
 access = 2
 filters = PoolStringArray( "*.jpg", "*.png", "*.jpeg" )
@@ -175,7 +187,7 @@ filters = PoolStringArray( "*.jpg", "*.png", "*.jpeg" )
 [node name="AudioDialog" type="FileDialog" parent="."]
 margin_right = 315.0
 margin_bottom = 130.0
-window_title = "Choose an audio"
+window_title = "Open a File"
 mode = 0
 access = 2
 filters = PoolStringArray( "*.mp3" )

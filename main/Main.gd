@@ -36,6 +36,18 @@ func _process(_delta):
 		var curr_time = OS.get_time()
 		if curr_time.hour == alarm_hour and curr_time.minute == alarm_minute:
 			play_alarm()
+	if alarm_sound.playing:
+#		$AlertOverlay.visible = OS.get_ticks_msec() % 1000 < 500
+		$AlertOverlay.visible = true
+		if OS.get_ticks_msec() % 1000 < 500:
+			$AlertOverlay.color = Color(1, 0.31, 0.31, 0.5)
+		else:
+			$AlertOverlay.color = Color(0.7, 0.31, 1, 0.44)
+#		$Wallpaper.rect_position.x += sin(OS.get_ticks_msec() * 0.005)
+		$Clock.rect_position.y += sin(OS.get_ticks_msec() * 0.001) * 0.1
+	elif alarm_sound.playing == false:
+		$Clock.rect_position.y = 266
+		$AlertOverlay.visible = false
 
 
 # My functions
@@ -63,7 +75,7 @@ func set_audio(path):
 	var f = File.new()
 	f.open(path, File.READ)
 	var size = f.get_len()
-	var conv_size = convert_size(size)
+#	var conv_size = convert_size(size)
 #	print(conv_size)
 #	print("The file '%s' is in size: '%.2f %s'" % [path, conv_size, unit_prefix])
 	var new_sound = AudioStreamMP3.new()
