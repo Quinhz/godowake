@@ -1,13 +1,21 @@
 extends Control
 
 # Variables
+var version = "v0.8.1-beta"
 var save_path = "user://settings.cfg"
 var wllp_path = "res://def_wallpaper_koala.jpg"
+var wllps = [
+	"res://def_wallpaper_goat.jpg",
+	"res://def_wallpaper_idk.jpg",
+	"res://def_wallpaper_koala.jpg"
+]
+var def_wllp
 var sound_path = "res://lo-fi-alarm-clock.mp3"
 
 var alarm_hour = -1
 var alarm_minute = -1
 var active_alarm = false
+var snooze_time = 5
 
 var unit_prefix = ""
 
@@ -24,10 +32,13 @@ onready var tween = get_node("Tween")
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	var plti = OS.get_time() # Placeholder current time
+	randomize()
+	var index = randi() % wllps.size()
+	def_wllp = wllps[index]
+	$Version.text = version
 	$HourInput.text = str(plti.hour)
 	$MinInput.text = str(plti.minute)
 	load_config()
-
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
@@ -36,6 +47,7 @@ func _process(_delta):
 	
 	if active_alarm:
 		var curr_time = OS.get_time()
+		OS.low_processor_usage_mode = false
 		if curr_time.hour == alarm_hour and curr_time.minute == alarm_minute:
 			play_alarm()
 	if alarm_sound.playing:
@@ -65,15 +77,18 @@ func _process(_delta):
 		$Clock.rect_position.y = 266
 		$AlertOverlay.visible = false
 
+func _input(event):
+	if event is InputEventKey:
+		if event.pressed and event.scancode == KEY_F11:
+			OS.window_fullscreen = !OS.window_fullscreen
 
 # My functions
 func set_wallpaper(path): # I hate Windows
-	wllp_path = path
-	if "res://" in path:
+	def_wllp = path
+	if "res://" in def_wllp:
 		var tex = load(path)
-		if tex:
-			$Wallpaper.texture = tex
-			return
+		$Wallpaper.texture = tex
+		return
 	var img = Image.new()
 	var error = img.load(path)
 	
@@ -81,11 +96,6 @@ func set_wallpaper(path): # I hate Windows
 		var tex =ImageTexture.new()
 		tex.create_from_image(img)
 		$Wallpaper.texture = tex
-#		print("External wallpaper loaded.")
-	else:
-#		pass
-		return
-#		print("Error loading from PC: ", error)
 
 func set_audio(path):
 	var f = File.new()
@@ -100,18 +110,18 @@ func set_audio(path):
 	f.close()
 	
 	sound_path = path
-#	print("Sound path saved:", sound_path)
 
 func play_alarm():
 	if active_alarm and not alarm_sound.playing:
 		alarm_sound.play()
 		$StopAlarm.show()
+		$Snooze.show()
+		$SetAlarm.hide()
 		status.text = "Ringing"
-#		print("HEY DEV!")
 
 func save_config():
 	var config = ConfigFile.new()
-	config.set_value("General", "wallpaper_path", wllp_path)
+	config.set_value("General", "wallpaper_path", def_wllp)
 	config.set_value("General", "audio_path", sound_path)
 	config.save(save_path)
 
@@ -120,10 +130,15 @@ func load_config():
 	var error = config.load(save_path)
 	
 	if error == OK:
-		var img_saved_path = config.get_value("General", "wallpaper_path", "res://def_wallpaper_koala.jpg")
+		var img_saved_path = config.get_value("General", "wallpaper_path", def_wllp)
+		if img_saved_path == "res://def_wallpaper_koala.jpg":
+			img_saved_path = def_wllp
+		
 		var aud_saved = config.get_value("General", "audio_path", "res://lo-fi-alarm-clock.mp3")
 		set_wallpaper(img_saved_path)
 		set_audio(aud_saved)
+	else:
+		set_wallpaper(def_wllp)
 
 func convert_size(size_bytes):
 	# Bytes to Kilobytes
@@ -162,22 +177,28 @@ func _on_SetAlarm_pressed():
 		active_alarm = true
 		if $StopAlarm.visible and alarm_sound.playing:
 			$StopAlarm.hide()
+			$Snooze.hide()
+			$SetAlarm.show()
 			status.text = ""
 			alarm_sound.stop()
 			active_alarm = false
+			OS.low_processor_usage_mode = true
 		if active_alarm:
 			status.text = "Alarm set for: %02d:%02d" % [h, m]
 	else:
 		alarm_hour = -1
 		alarm_minute = -1
 		active_alarm = false
+		OS.low_processor_usage_mode = true
 		status.text = "Invalid Time!"
-	print(active_alarm)
 
 
 func _on_StopAlarm_pressed():
 	$StopAlarm.hide()
+	$Snooze.hide()
+	$SetAlarm.show()
 	active_alarm = false
+	OS.low_processor_usage_mode = true
 	alarm_sound.stop()
 	status.text = ""
 	
@@ -190,3 +211,15 @@ func _on_ChangeAudio_pressed():
 func _on_AudioDialog_file_selected(path):
 	set_audio(path)
 	save_config()
+
+
+func _on_Snooze_pressed():
+	alarm_minute += snooze_time
+	if alarm_minute >= 60:
+		alarm_minute -= 60
+		alarm_hour += 1
+	if alarm_hour >= 24:
+		alarm_hour = 0
+	$Snooze.hide()
+	alarm_sound.stop()
+	status.text = "Snoozed to: %02d:%02d" % [alarm_hour, alarm_minute]

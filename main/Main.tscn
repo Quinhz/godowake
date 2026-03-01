@@ -24,7 +24,8 @@ font_data = ExtResource( 2 )
 [sub_resource type="DynamicFont" id=5]
 font_data = ExtResource( 2 )
 
-[sub_resource type="ShortCut" id=51]
+[sub_resource type="DynamicFont" id=54]
+font_data = ExtResource( 2 )
 
 [sub_resource type="StyleBoxFlat" id=14]
 content_margin_bottom = 5.0
@@ -455,34 +456,47 @@ __meta__ = {
 }
 
 [node name="SetAlarm" type="Button" parent="."]
-anchor_left = 0.497559
-anchor_top = 0.725833
-anchor_right = 0.497559
-anchor_bottom = 0.725833
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
 margin_left = -37.5
-margin_top = -11.5
+margin_top = 124.0
 margin_right = 37.5
-margin_bottom = 11.5
+margin_bottom = 147.0
 rect_min_size = Vector2( 75, 23 )
 mouse_default_cursor_shape = 2
 theme = ExtResource( 5 )
 custom_fonts/font = SubResource( 5 )
-shortcut = SubResource( 51 )
 text = "Set Alarm"
+
+[node name="Snooze" type="Button" parent="."]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.776667
+anchor_right = 0.5
+anchor_bottom = 0.776667
+margin_left = -29.0
+margin_top = -10.0
+margin_right = 29.0
+margin_bottom = 10.0
+theme = ExtResource( 5 )
+custom_fonts/font = SubResource( 54 )
+text = "Snooze"
 __meta__ = {
 "_edit_use_anchors_": true
 }
 
 [node name="StopAlarm" type="Button" parent="."]
 visible = false
-anchor_left = 0.489746
-anchor_top = 0.779167
-anchor_right = 0.505371
-anchor_bottom = 0.779167
-margin_left = -37.5
-margin_top = -11.5
-margin_right = 37.5
-margin_bottom = 11.5
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -45.5
+margin_top = 124.0
+margin_right = 45.5
+margin_bottom = 147.0
 rect_min_size = Vector2( 91, 23 )
 mouse_default_cursor_shape = 2
 custom_fonts/font = SubResource( 5 )
@@ -491,9 +505,6 @@ custom_styles/pressed = SubResource( 16 )
 custom_styles/focus = SubResource( 17 )
 custom_styles/normal = SubResource( 15 )
 text = "Stop Alarm"
-__meta__ = {
-"_edit_use_anchors_": true
-}
 
 [node name="FileDialog" type="FileDialog" parent="."]
 margin_right = 315.0
@@ -521,9 +532,21 @@ stream = ExtResource( 3 )
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/test = SubResource( 13 )
 
+[node name="Version" type="Label" parent="."]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -64.0
+margin_top = -14.0
+margin_right = -5.0
+grow_horizontal = 0
+valign = 1
+
 [connection signal="pressed" from="ChangeWallp" to="." method="_on_ChangeWallp_pressed"]
 [connection signal="pressed" from="ChangeAudio" to="." method="_on_ChangeAudio_pressed"]
 [connection signal="pressed" from="SetAlarm" to="." method="_on_SetAlarm_pressed"]
+[connection signal="pressed" from="Snooze" to="." method="_on_Snooze_pressed"]
 [connection signal="pressed" from="StopAlarm" to="." method="_on_StopAlarm_pressed"]
 [connection signal="file_selected" from="FileDialog" to="." method="_on_FileDialog_file_selected"]
 [connection signal="file_selected" from="AudioDialog" to="." method="_on_AudioDialog_file_selected"]

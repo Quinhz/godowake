@@ -12,12 +12,14 @@ config_version=4
 
 config/name="GodoWake"
 run/main_scene="res://main/Main.tscn"
-config/icon="res://icon.png"
+boot_splash/image="res://icons/ofc_icon_wname.png"
+boot_splash/use_filter=false
+boot_splash/bg_color=Color( 0.356863, 0.560784, 0.85098, 1 )
+config/icon="res://icons/ofc_icon_nobg.png"
 
 [display]
 
-window/handheld/orientation="sensor"
-window/stretch/mode="viewport"
+window/stretch/mode="2d"
 window/stretch/aspect="expand"
 
 [gui]
